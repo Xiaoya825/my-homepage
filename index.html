@@ -1321,9 +1321,10 @@
     .film-photo {
       position: relative;
       display: grid;
-      aspect-ratio: 1 / 1.22;
+      aspect-ratio: 1 / 1;
       place-items: center;
       overflow: hidden;
+      isolation: isolate;
       background:
         radial-gradient(ellipse at 50% 15%, rgba(255, 255, 255, 0.58), transparent 38%),
         #e6d6ba;
@@ -1337,19 +1338,16 @@
       pointer-events: none;
     }
 
-    .film-photo img,
-    .film-photo svg {
+    .film-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: sepia(0.14) saturate(0.84) contrast(0.98);
+      filter: sepia(0.12) saturate(0.9) contrast(0.98);
+      mix-blend-mode: multiply;
       transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .film-frame:hover .film-photo img,
-    .film-frame:hover .film-photo svg { transform: scale(1.045); }
-
-    .film-photo svg { padding: 9% 5%; object-fit: contain; }
+    .film-frame:hover .film-photo img { transform: scale(1.045); }
 
     .film-frame:nth-child(2) .film-photo { background: #e2d7c3; }
     .film-frame:nth-child(3) .film-photo { background: #dfd7c5; }
@@ -1893,7 +1891,7 @@
         gap: 7px;
       }
 
-      .film-photo { aspect-ratio: 1 / 1.08; }
+      .film-photo { aspect-ratio: 1 / 1; }
 
       .film-frame figcaption {
         padding-bottom: 8px;
@@ -2375,6 +2373,7 @@
 
         <div class="film-stage reveal">
           <div class="film-strip">
+            <!-- 想换胶片图片：直接替换同目录下的 cute-rilakkuma.jpg、cute-sumikko.jpg、cute-lulu.jpg 即可。建议使用 1:1 方形图。 -->
             <div class="film-frames">
               <figure class="film-frame">
                 <div class="film-photo">
@@ -2388,7 +2387,7 @@
 
               <figure class="film-frame">
                 <div class="film-photo">
-                  <svg viewBox="0 0 220 180" aria-hidden="true"><use href="#mascot-bear"></use></svg>
+                  <img src="cute-rilakkuma.jpg" alt="轻松熊和小黄鸡的插画" loading="lazy" decoding="async">
                 </div>
                 <figcaption>
                   <span>02 / RELAX</span>
@@ -2398,7 +2397,7 @@
 
               <figure class="film-frame">
                 <div class="film-photo">
-                  <svg viewBox="0 0 280 190" aria-hidden="true"><use href="#mascot-corner"></use></svg>
+                  <img src="cute-sumikko.jpg" alt="角落生物角色合影" loading="lazy" decoding="async">
                 </div>
                 <figcaption>
                   <span>03 / LITTLE CORNER</span>
@@ -2408,7 +2407,7 @@
 
               <figure class="film-frame">
                 <div class="film-photo">
-                  <svg viewBox="0 0 280 210" aria-hidden="true"><use href="#mascot-capybara"></use></svg>
+                  <img src="cute-lulu.jpg" alt="水豚噜噜的插画" loading="lazy" decoding="async">
                 </div>
                 <figcaption>
                   <span>04 / SLOW DOWN</span>
